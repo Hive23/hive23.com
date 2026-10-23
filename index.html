@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hive23</title>
+  <meta name="description" content="Little hives, humming along in East Point, GA.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-40 -40 80 80'%3E%3Cpath d='M0-36L31.18-18V18L0 36L-31.18 18V-18Z' fill='%23F4B942' stroke='%233B2A1A' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FBF5E9;
+      --ink: #3B2A1A;
+      --muted: #7A6450;
+      --honey: #F4B942;
+      --honey-light: #FAD98B;
+      --honey-deep: #D9901E;
+      --wing: #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1F1812;
+        --ink: #F6EBD6;
+        --muted: #BCA58A;
+        --honey-light: #8A6420;
+        --wing: #F6EBD6;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 16px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Fraunces", Georgia, serif;
+      text-align: center;
+    }
+
+    .hive { width: min(420px, 100%); height: auto; overflow: visible; }
+    .hive .cell { stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+    .hive .full { fill: var(--honey); }
+    .hive .soft { fill: var(--honey-light); }
+    .hive .empty { fill: none; stroke-dasharray: 4 6; opacity: .5; }
+    .hive .heart { fill: var(--honey-deep); }
+    .hive .icon { fill: none; stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .hive .trail { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 1 6; stroke-linecap: round; }
+    .hive .num { fill: #FBF5E9; font: 700 30px "Fraunces", Georgia, serif; }
+
+    .bee { animation: bob 3.2s ease-in-out infinite; transform-box: fill-box; }
+    .bee.two { animation-delay: -1.6s; animation-duration: 2.7s; }
+    .wing { fill: var(--wing); fill-opacity: .85; stroke: var(--ink); stroke-width: 1.5;
+                 transform-box: fill-box; transform-origin: 50% 100%; animation: buzz .12s linear infinite alternate; }
+    .body { fill: var(--honey); stroke: var(--ink); stroke-width: 1.5; }
+    .stripe, .eye { fill: var(--ink); }
+
+    @keyframes bob  { 50% { transform: translate(3px, -7px) rotate(-6deg); } }
+    @keyframes buzz { to  { transform: scaleY(.55); } }
+    @media (prefers-reduced-motion: reduce) {
+      .bee, .wing { animation: none; }
+    }
+
+    h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); line-height: 1; letter-spacing: -.02em; }
+    .tagline { margin-top: .5rem; color: var(--muted); font-size: 1.15rem; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 12rem));
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    li strong { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
+    li span { display: block; color: var(--muted); line-height: 1.4; }
+    @media (max-width: 640px) {
+      ul { grid-template-columns: minmax(0, 18rem); gap: 1rem; }
+    }
+
+    .tagline, li span { text-wrap: balance; }
+
+    footer { color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <svg class="hive" viewBox="-200 -150 400 300" role="img" aria-label="A honeycomb with a newspaper, an envelope, and a zine tucked in its cells, and two bees buzzing nearby">
+    <defs>
+      <path id="hex" d="M0-36L31.18-18V18L0 36L-31.18 18V-18Z"/>
+      <clipPath id="beeClip"><ellipse rx="10" ry="7"/></clipPath>
+      <g id="bee">
+        <ellipse class="wing" cx="-3" cy="-11" rx="4.5" ry="7"/>
+        <ellipse class="wing" cx="4" cy="-11" rx="4.5" ry="7"/>
+        <ellipse class="body" rx="10" ry="7"/>
+        <g clip-path="url(#beeClip)">
+          <rect class="stripe" x="-4.5" y="-8" width="3" height="16"/>
+          <rect class="stripe" x="1.5" y="-8" width="3" height="16"/>
+        </g>
+        <circle class="eye" cx="7" cy="-1.5" r="1.4"/>
+      </g>
+    </defs>
+
+    <!-- the comb -->
+    <use href="#hex" class="cell empty" x="-103.92" y="-60"/>
+    <use href="#hex" class="cell empty" x="103.92" y="60"/>
+    <use href="#hex" class="cell empty" x="138.56" y="0"/>
+    <use href="#hex" class="cell soft"  x="34.64" y="-60"/>
+    <use href="#hex" class="cell soft"  x="-69.28" y="0"/>
+    <use href="#hex" class="cell soft"  x="34.64" y="60"/>
+    <use href="#hex" class="cell full"  x="-34.64" y="-60"/>
+    <use href="#hex" class="cell full"  x="69.28" y="0"/>
+    <use href="#hex" class="cell full"  x="-34.64" y="60"/>
+    <use href="#hex" class="cell heart" x="0"    y="0"/>
+    <text class="num" x="0" y="11" text-anchor="middle">23</text>
+
+    <!-- newspaper -->
+    <g class="icon" transform="translate(-34.64 -60)">
+      <rect x="-14" y="-12" width="28" height="24" rx="2"/>
+      <path d="M-9-6h18M-9-1h7v8h-7zM2-1h7M2 3h7M2 7h7"/>
+    </g>
+    <!-- envelope -->
+    <g class="icon" transform="translate(69.28 0)">
+      <rect x="-15" y="-10" width="30" height="20" rx="2"/>
+      <path d="M-15-9L0 3L15-9"/>
+    </g>
+    <!-- zine -->
+    <g class="icon" transform="translate(-34.64 60)">
+      <path d="M0-9C-5-12-11-12-16-10V11C-11 9-5 9 0 12C5 9 11 9 16 11V-10C11-12 5-12 0-9ZM0-9V12"/>
+    </g>
+
+    <!-- bees -->
+    <path class="trail" d="M60-82C80-110 100-125 120-110S140-95 150-108"/>
+    <g transform="translate(164 -110) scale(1.4)"><use href="#bee" class="bee"/></g>
+    <path class="trail" d="M-90 45C-115 60-110 95-135 92S-150 100-162 96"/>
+    <g transform="translate(-176 92) scale(-1.4 1.4)"><use href="#bee" class="bee two"/></g>
+  </svg>
+
+  <header>
+    <h1>Hive23</h1>
+    <p class="tagline">Little hives, humming along in East Point, GA.</p>
+  </header>
+
+  <ul>
+    <li><strong>The Paper</strong><span>Neighborly news for East Point.</span></li>
+    <li><strong>Letters</strong><span>No printer? We’ll print and mail it.</span></li>
+    <li><strong>Zines &amp; Stationery</strong><span>Make something for someone you love.</span></li>
+  </ul>
+
+  <footer>© 2026 Hive23</footer>
+</body>
+</html>
