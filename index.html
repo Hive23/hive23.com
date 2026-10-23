@@ -72,27 +72,15 @@
     h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); line-height: 1; letter-spacing: -.02em; }
     .tagline { margin-top: .5rem; color: var(--muted); font-size: 1.15rem; }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 12rem));
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    li strong { display: block; font-size: 1.1rem; margin-bottom: .25rem; }
-    li span { display: block; color: var(--muted); line-height: 1.4; }
-    @media (max-width: 640px) {
-      ul { grid-template-columns: minmax(0, 18rem); gap: 1rem; }
-    }
+    .blurb { max-width: 30rem; font-size: 1.1rem; line-height: 1.5; }
 
-    .tagline, li span { text-wrap: balance; }
+    .tagline, .blurb { text-wrap: balance; }
 
     footer { color: var(--muted); font-size: .9rem; }
   </style>
 </head>
 <body>
-  <svg class="hive" viewBox="-200 -150 400 300" role="img" aria-label="A honeycomb with a newspaper, an envelope, and a zine tucked in its cells, and two bees buzzing nearby">
+  <svg class="hive" viewBox="-200 -150 400 300" role="img" aria-label="A honeycomb with a newspaper and an envelope tucked in its cells, and two bees buzzing nearby">
     <defs>
       <path id="hex" d="M0-36L31.18-18V18L0 36L-31.18 18V-18Z"/>
       <clipPath id="beeClip"><ellipse rx="10" ry="7"/></clipPath>
@@ -117,7 +105,7 @@
     <use href="#hex" class="cell soft"  x="34.64" y="60"/>
     <use href="#hex" class="cell full"  x="-34.64" y="-60"/>
     <use href="#hex" class="cell full"  x="69.28" y="0"/>
-    <use href="#hex" class="cell full"  x="-34.64" y="60"/>
+    <use href="#hex" class="cell soft"  x="-34.64" y="60"/>
     <use href="#hex" class="cell heart" x="0"    y="0"/>
     <text class="num" x="0" y="11" text-anchor="middle">23</text>
 
@@ -130,10 +118,6 @@
     <g class="icon" transform="translate(69.28 0)">
       <rect x="-15" y="-10" width="30" height="20" rx="2"/>
       <path d="M-15-9L0 3L15-9"/>
-    </g>
-    <!-- zine -->
-    <g class="icon" transform="translate(-34.64 60)">
-      <path d="M0-9C-5-12-11-12-16-10V11C-11 9-5 9 0 12C5 9 11 9 16 11V-10C11-12 5-12 0-9ZM0-9V12"/>
     </g>
 
     <!-- bees -->
@@ -148,11 +132,7 @@
     <p class="tagline">Little hives, humming along in East Point, GA.</p>
   </header>
 
-  <ul>
-    <li><strong>The Paper</strong><span>Neighborly news for East Point.</span></li>
-    <li><strong>Letters</strong><span>No printer? We’ll print and mail it.</span></li>
-    <li><strong>Zines &amp; Stationery</strong><span>Make something for someone you love.</span></li>
-  </ul>
+  <p class="blurb">We publish a neighborly newspaper for East Point, College Park &amp; Hapeville. No printer? We’ll print and mail your letters, too.</p>
 
   <footer>© 2026 Hive23</footer>
 </body>
